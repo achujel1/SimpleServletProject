@@ -3,11 +3,13 @@ package org.roba.javabrains;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class SimpleServlet
@@ -22,9 +24,29 @@ public class SimpleServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Hello from GET method");
+		response.setContentType("text/html");
 		PrintWriter writer = response.getWriter();
-		writer.println("<h3>Hello in html</h3>");
-	}
+		String userName = request.getParameter("name");
 
+		HttpSession session = request.getSession();
+		ServletContext context = request.getServletContext();
+
+		if (userName != "" && userName != null) {
+
+			// Here we are saving userName in this session
+			session.setAttribute("savedUserName", userName);
+
+			// Here we are saving userName in application
+			context.setAttribute("savedUserName", userName);
+		}
+		writer.println("Request parameter has userName as: " + userName);
+
+		// Here we are calling userName from saved place in this session
+		writer.println("Session parameter has username as: "
+				+ (String) session.getAttribute("savedUserName"));
+
+		// Here we are calling userName from saved place in application
+		writer.println("Session parameter has username as: "
+				+ (String) context.getAttribute("savedUserName"));
+	}
 }
