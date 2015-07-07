@@ -1,6 +1,7 @@
 package org.roba.javabrains;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,6 +15,17 @@ public class XmlServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("XML servlet called!");
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		String userName = request.getParameter("userName");
+		out.println("Hello from GET method, " + userName);
+	}
+
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		String userName = request.getParameter("userName");
+		out.println("Hello from POST method, " + userName);
 	}
 }
