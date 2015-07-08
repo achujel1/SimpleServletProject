@@ -1,3 +1,4 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -35,5 +36,16 @@
 	<h3>
 		The value of k now is:
 		<%=k = add(1, 2)%></h3>
+
+	<!-- Testing HTML inside Java tag -->
+	<%
+		for (int i = 1; i <= 5; i++) {
+	%>
+	<!-- Really interesting and cool thing here :) -->
+	<br> This is the HTML value inside JAVA tag, i:
+	<%=i%>
+	<%
+		}
+	%>
 </body>
 </html>
