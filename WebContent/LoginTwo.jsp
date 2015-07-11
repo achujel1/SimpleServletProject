@@ -7,15 +7,17 @@
 <title>Login Page</title>
 </head>
 <body>
-	<form action="login" method="post">
-		<br> User ID: <input type="text" name="userId" /> 
-		<br> User Name: <input type="text" name="userName" />
-		<br> Address Line 1: <input type="text" name="userName" />
-		<br> User Name: <input type="text" name="userName" />
-		<br> User Name: <input type="text" name="userName" />
-		<br> User Name: <input type="text" name="userName" />
-		 <input
-			type="submit" />
+	<form action="Process.jsp" method="post">
+
+		<!-- We are setting some values -->
+		<br> User ID: <input type="text" name="userId"></input> <br>
+		User Name: <input type="text" name="username"></input> <br>
+		Address Line 1: <input type="text" name="address1"></input> <br>
+		Address Line 2: <input type="text" name="address2"></input> <br>
+		City: <input type="text" name="city"></input> <br> State: <input
+			type="text" name="state"></input> <br> Pin code: <input
+			type="text" name="pincode"></input><input type="submit" /><br>
+
 	</form>
 </body>
 </html>
